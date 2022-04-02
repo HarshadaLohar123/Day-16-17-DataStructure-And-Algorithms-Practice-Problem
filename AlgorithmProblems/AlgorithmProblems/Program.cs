@@ -6,25 +6,38 @@ namespace AlgorithmProblems
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter First String:");
-            string str1 = Console.ReadLine();
-            Console.WriteLine("Enter Second String:");
-            string str2 = Console.ReadLine();
+            // Declare the variables
+            int a, b, i, j, flag;
 
-            char[] ch1 = str1.ToLower().ToCharArray();
-            char[] ch2 = str2.ToLower().ToCharArray();
-            Array.Sort(ch1);
-            Array.Sort(ch2);
-            string val1 = new string(ch1);
-            string val2 = new string(ch2);
+            Console.WriteLine("Enter First Value: ");
+            a = int.Parse(Console.ReadLine());
 
-            if (val1 == val2)
+            Console.WriteLine("\nEnter Second Value: ");
+            b = int.Parse(Console.ReadLine());
+
+            // Print display message
+            Console.WriteLine("\nPrime numbers between " +
+                              "{0} and {1} are: ", a, b);
+
+            for (i = a; i <= b; i++)
             {
-                Console.WriteLine("Both the strings are Anagrams");
-            }
-            else
-            {
-                Console.WriteLine("Both the strings are not Anagrams");
+                if (i == 1 || i == 0)
+                    continue;
+                flag = 1;
+
+                for (j = 2; j <= i / 2; ++j)
+                {
+                    if (i % j == 0)
+                    {
+                        flag = 0;
+                        break;
+                    }
+                }
+
+                // flag = 1 means i is prime
+                // and flag = 0 means i is not prime
+                if (flag == 1)
+                    Console.WriteLine(i);
             }
 
         }
